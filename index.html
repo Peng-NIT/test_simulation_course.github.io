@@ -28,10 +28,10 @@
         <div class="stage-head"><span><i></i>TEACHING PIPELINE</span><b>LIVE</b></div>
         <div class="stage-prompt"><small>NATURAL LANGUAGE</small><p class="type-line" data-text="将故障熔断器放入回收区"></p></div>
         <div class="stage-flow">
-          <div class="stage-node active"><i>01</i><div><strong>意图识别</strong><span>对象 · 区域 · 目标</span></div></div><b class="pulse-line"></b>
-          <div class="stage-node"><i>02</i><div><strong>PDDL 规划</strong><span>Problem · Domain · Plan</span></div></div><b class="pulse-line d2"></b>
-          <div class="stage-node"><i>03</i><div><strong>6DOF 轨迹</strong><span>路点 · 关节 · 姿态</span></div></div><b class="pulse-line d3"></b>
-          <div class="stage-node gold"><i>04</i><div><strong>虚拟验证</strong><span>执行 · 观察 · 分析</span></div></div>
+          <div class="stage-node" data-stage="0"><i>01</i><div><strong>意图识别</strong><span>对象 faulty_fuse_1 · 目标 recycle_area</span></div></div><b class="pulse-line" data-line="0"></b>
+          <div class="stage-node" data-stage="1"><i>02</i><div><strong>PDDL 规划</strong><span>(:goal (at faulty_fuse_1 recycle_area))</span></div></div><b class="pulse-line" data-line="1"></b>
+          <div class="stage-node" data-stage="2"><i>03</i><div><strong>6DOF 轨迹</strong><span>5 路点 · q1–q6 · 安全高度 0.52 m</span></div></div><b class="pulse-line" data-line="2"></b>
+          <div class="stage-node gold" data-stage="3"><i>04</i><div><strong>虚拟验证</strong><span>轨迹连续 · 无碰撞 · 任务完成</span></div></div>
         </div>
         <div class="stage-foot"><span>AI + PDDL + 6DOF</span><span>MUJOCO</span></div>
       </div>
@@ -66,12 +66,12 @@
             <defs><pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#e4e5e1"/></pattern></defs>
             <rect width="560" height="380" fill="url(#grid)"/><circle cx="286" cy="192" r="151" fill="none" stroke="#c8ccca" stroke-dasharray="3 8"/><circle cx="286" cy="192" r="112" fill="none" stroke="#e1e3e0"/>
             <path d="M286 192H528M286 192V28" stroke="#adb4b2"/><text x="532" y="196">X</text><text x="281" y="20">Y</text>
-            <rect x="38" y="274" width="95" height="70" fill="#eef0ee" stroke="#87918f"/><text x="55" y="365">检修区</text><rect x="434" y="46" width="92" height="70" fill="#f4efe2" stroke="#a88e55"/><text x="455" y="138">回收区</text>
-            <path d="M91 309Q272 34 480 82" fill="none" stroke="#a88e55" stroke-width="2" stroke-dasharray="5 8"/><text x="290" y="48" class="gold">规划轨迹</text>
-            <path class="arm" d="M286 192L230 142L135 262" fill="none" stroke="#334950" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><animate attributeName="d" dur="10s" repeatCount="indefinite" values="M286 192L230 142L135 262;M286 192L220 188L91 309;M286 192L285 112L390 103;M286 192L360 158L480 82;M286 192L360 158L480 82;M286 192L230 142L135 262" keyTimes="0;.2;.48;.72;.88;1"/></path>
+            <rect x="120" y="247" width="90" height="65" fill="#eef0ee" stroke="#87918f"/><text x="140" y="333">检修区</text><rect x="365" y="74" width="90" height="65" fill="#f4efe2" stroke="#a88e55"/><text x="385" y="160">回收区</text>
+            <path d="M165 282Q285 68 410 107" fill="none" stroke="#a88e55" stroke-width="2" stroke-dasharray="5 8"/><text x="288" y="61" class="gold">规划轨迹</text>
+            <path class="arm" d="M286 192L245 160L190 230" fill="none" stroke="#334950" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><animate attributeName="d" dur="10s" repeatCount="indefinite" values="M286 192L245 160L190 230;M286 192L235 220L165 282;M286 192L295 125L365 115;M286 192L340 150L410 107;M286 192L340 150L410 107;M286 192L245 160L190 230" keyTimes="0;.2;.48;.72;.88;1"/></path>
             <circle cx="286" cy="192" r="29" fill="#263a40"/><circle cx="286" cy="192" r="10" fill="#dce0de"/><text x="257" y="238">底座</text>
-            <circle cx="135" cy="262" r="9" fill="#b88426"><animate attributeName="cx" dur="10s" repeatCount="indefinite" values="135;91;390;480;480;135" keyTimes="0;.2;.48;.72;.88;1"/><animate attributeName="cy" dur="10s" repeatCount="indefinite" values="262;309;103;82;82;262" keyTimes="0;.2;.48;.72;.88;1"/></circle>
-            <rect x="77" y="303" width="28" height="12" rx="6" fill="#b85e43"><animate attributeName="x" dur="10s" repeatCount="indefinite" values="77;77;376;466;466;77" keyTimes="0;.2;.48;.72;.88;1"/><animate attributeName="y" dur="10s" repeatCount="indefinite" values="303;303;97;76;76;303" keyTimes="0;.2;.48;.72;.88;1"/></rect>
+            <circle cx="190" cy="230" r="9" fill="#b88426"><animate attributeName="cx" dur="10s" repeatCount="indefinite" values="190;165;365;410;410;190" keyTimes="0;.2;.48;.72;.88;1"/><animate attributeName="cy" dur="10s" repeatCount="indefinite" values="230;282;115;107;107;230" keyTimes="0;.2;.48;.72;.88;1"/></circle>
+            <rect x="151" y="276" width="28" height="12" rx="6" fill="#b85e43"><animate attributeName="x" dur="10s" repeatCount="indefinite" values="151;151;351;396;396;151" keyTimes="0;.2;.48;.72;.88;1"/><animate attributeName="y" dur="10s" repeatCount="indefinite" values="276;276;109;101;101;276" keyTimes="0;.2;.48;.72;.88;1"/></rect>
           </svg>
         </div>
       </div>
@@ -79,13 +79,32 @@
 
     <section class="explain-section section-pad">
       <div class="section-label reveal">03 / AI 深度解读</div>
-      <div class="heading-grid reveal"><h2>把代码与参数，<br>转化为可视的教学解释。</h2><p>AI 根据当前 PDDL 和运动参数组织解读内容，再以 answer-me-with-html 的方式生成独立的结构化讲解页。</p></div>
+      <div class="heading-grid reveal"><h2>把代码与参数，<br>转化为可视的教学解释。</h2><p>AI 根据当前 PDDL 和运动参数提取任务目标、规划关系与参数影响，并生成层次清晰、便于阅读的结构化教学讲解。</p></div>
       <div class="explain-demo reveal">
-        <div class="source-card"><div class="source-head"><span>CURRENT CONTEXT</span><b>PDDL + MOTION</b></div><pre>(:goal
-  (at faulty_fuse_1
-      recycle_area))</pre><dl><div><dt>安全高度 Z</dt><dd>0.52 m</dd></div><div><dt>轴向接近距离</dt><dd>0.10 m</dd></div></dl><button type="button" tabindex="-1"><i></i>生成可视化深度解读</button></div>
-        <div class="transform"><i></i><span>AI 结构化解读</span><b>→</b><span>HTML 教学页</span><i></i></div>
-        <div class="result-page"><div class="browser-bar"><i></i><i></i><i></i><b>PDDL 规划解读</b></div><div class="result-body"><article class="result-reveal r1"><small>核心结论</small><h3>目标是将故障熔断器移至回收区</h3></article><article class="result-reveal r2"><small>规划关系</small><div class="mini-flow"><b>初始状态</b><i>→</i><b>抓取</b><i>→</i><b>搬运</b><i>→</i><b>目标状态</b></div></article><div class="result-pair"><article class="result-reveal r3"><small>对象</small><strong>faulty_fuse_1</strong><p>检修区中的故障部件</p></article><article class="result-reveal r4"><small>参数影响</small><strong>安全高度</strong><p>影响跨越障碍与轨迹长度</p></article></div><div class="teaching-note result-reveal r5"><b>教学提示</b><span>AI 提供解读；运动学与碰撞检查由程序执行。</span></div></div></div>
+        <div class="source-card">
+          <div class="source-head"><span>CURRENT CONTEXT</span><b>PDDL + MOTION</b></div>
+          <pre>(:init
+  (at breaker_2 cabinet_slot_A)
+  (power-isolated feeder_A)
+  (gripper-calibrated))
+(:goal
+  (and (at breaker_2 service_cart)
+       (slot-safe cabinet_slot_A)))</pre>
+          <dl><div><dt>安全高度 Z</dt><dd>0.56 m</dd></div><div><dt>正面退出距离</dt><dd>0.14 m</dd></div><div><dt>末端限速</dt><dd>0.18 m/s</dd></div></dl>
+          <button id="generate-explanation" type="button"><i></i><span>生成可视化深度解读</span></button>
+        </div>
+        <div class="transform" id="explain-process"><i></i><span>等待生成</span><b>→</b><span>结构化讲解页</span><i></i></div>
+        <div class="result-page is-waiting" id="explanation-result">
+          <div class="result-placeholder"><i></i><strong>等待生成深度解读</strong><span>点击左侧按钮，查看从代码到教学解释的转换过程</span></div>
+          <div class="browser-bar"><i></i><i></i><i></i><b>断路器模块检修任务 · 结构化解读</b></div>
+          <div class="result-body">
+            <article class="result-reveal r1"><small>任务语义结论</small><h3>在馈线 A 已隔离且夹爪完成标定的前提下，将断路器模块 2 从 A 槽位安全退出并转移至检修车，同时确认原槽位进入安全状态。</h3></article>
+            <div class="condition-grid result-reveal r2"><div><small>前置条件</small><b>✓ 馈线 A 已隔离</b><b>✓ 夹爪完成标定</b></div><div><small>复合目标</small><b>模块到达检修车</b><b>A 槽位标记安全</b></div></div>
+            <article class="result-reveal r3"><small>规划动作链</small><div class="mini-flow complex"><b>approach</b><i>→</i><b>align</b><i>→</i><b>unlock</b><i>→</i><b>extract</b><i>→</i><b>transfer</b><i>→</i><b>place</b></div></article>
+            <div class="parameter-matrix result-reveal r4"><small>关键参数与因果影响</small><div><b>Z = 0.56 m</b><span>越障余量 ↑　轨迹长度 ↑</span></div><div><b>退出 = 0.14 m</b><span>脱离导轨充分　避免侧向刮碰</span></div><div><b>速度 = 0.18 m/s</b><span>降低惯性　提升重载搬运稳定性</span></div></div>
+            <div class="teaching-note result-reveal r5"><b>风险判读</b><span>若未满足 power-isolated，规划在语义层即被拒绝；运动学可达不等于任务允许执行。</span></div>
+          </div>
+        </div>
       </div>
       <p class="demo-caption">功能演示不调用 API；实验程序将根据学生当前内容动态生成解读。</p>
     </section>

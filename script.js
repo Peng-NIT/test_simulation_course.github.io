@@ -54,28 +54,105 @@ if (reducedMotion || !("IntersectionObserver" in window)) {
   reveals.forEach(element => observer.observe(element));
 }
 
+const flowSections = [...document.querySelectorAll("main > section:not(.hero)")];
+if (!reducedMotion && "IntersectionObserver" in window) {
+  flowSections.forEach(section => section.classList.add("flow-section"));
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle("section-visible", entry.isIntersecting);
+    });
+  }, { threshold: 0.08, rootMargin: "-8% 0px -8% 0px" });
+  flowSections.forEach(section => sectionObserver.observe(section));
+}
+
 const typeLine = document.querySelector(".type-line");
 const phrase = typeLine.dataset.text;
+const stageNodes = [...document.querySelectorAll(".stage-node")];
+const stageLines = [...document.querySelectorAll(".pulse-line")];
+const pause = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 if (reducedMotion) {
   typeLine.textContent = phrase;
+  stageNodes.forEach(node => node.classList.add("is-complete"));
 } else {
-  let index = 0;
-  let deleting = false;
-  const type = () => {
-    typeLine.textContent = phrase.slice(0, index);
-    if (!deleting && index < phrase.length) {
-      index += 1;
-      setTimeout(type, 115);
-    } else if (!deleting) {
-      deleting = true;
-      setTimeout(type, 2100);
-    } else if (index > 0) {
-      index -= 1;
-      setTimeout(type, 55);
-    } else {
-      deleting = false;
-      setTimeout(type, 650);
+  const playPipeline = async () => {
+    typeLine.classList.remove("is-resetting");
+    typeLine.textContent = "";
+    stageNodes.forEach(node => node.classList.remove("is-active", "is-complete"));
+    stageLines.forEach(line => line.classList.remove("is-flowing"));
+    await pause(450);
+    for (let index = 1; index <= phrase.length; index += 1) {
+      typeLine.textContent = phrase.slice(0, index);
+      await pause(105);
     }
+    await pause(350);
+    for (let index = 0; index < stageNodes.length; index += 1) {
+      if (index > 0) stageNodes[index - 1].classList.replace("is-active", "is-complete");
+      stageNodes[index].classList.add("is-active");
+      await pause(650);
+      if (stageLines[index]) {
+        stageLines[index].classList.add("is-flowing");
+        await pause(550);
+      }
+    }
+    stageNodes.at(-1).classList.replace("is-active", "is-complete");
+    await pause(2200);
+    typeLine.classList.add("is-resetting");
+    await pause(280);
+    playPipeline();
   };
-  type();
+  playPipeline();
 }
+
+const explainButton = document.querySelector("#generate-explanation");
+const explainButtonText = explainButton.querySelector("span");
+const explainProcess = document.querySelector("#explain-process");
+const processLabels = explainProcess.querySelectorAll("span");
+const explanationResult = document.querySelector("#explanation-result");
+const placeholderTitle = explanationResult.querySelector(".result-placeholder strong");
+const sourceCode = document.querySelector(".source-card pre");
+const parameterRows = [...document.querySelectorAll(".source-card dl div")];
+
+const runExplanation = async () => {
+  explainButton.disabled = true;
+  explanationResult.classList.remove("is-generated");
+  explanationResult.classList.add("is-waiting");
+  processLabels[0].textContent = "准备分析";
+  placeholderTitle.textContent = "正在载入实验上下文";
+  await pause(reducedMotion ? 0 : 260);
+  explainButtonText.textContent = "正在分析实验内容…";
+  explanationResult.classList.remove("is-waiting");
+  explanationResult.classList.add("is-generating");
+  explainProcess.classList.add("is-processing");
+
+  if (!reducedMotion) {
+    sourceCode.classList.add("is-highlighted");
+    processLabels[0].textContent = "解析任务目标";
+    placeholderTitle.textContent = "正在解析 PDDL 目标";
+    await pause(850);
+    sourceCode.classList.remove("is-highlighted");
+    parameterRows[0].classList.add("is-highlighted");
+    processLabels[0].textContent = "识别参数影响";
+    placeholderTitle.textContent = "正在分析安全高度";
+    await pause(700);
+    parameterRows[0].classList.remove("is-highlighted");
+    parameterRows[1].classList.add("is-highlighted");
+    processLabels[0].textContent = "构建动作链";
+    placeholderTitle.textContent = "正在组织动作规划关系";
+    await pause(700);
+    parameterRows[1].classList.remove("is-highlighted");
+    parameterRows[2].classList.add("is-highlighted");
+    processLabels[0].textContent = "评估执行风险";
+    placeholderTitle.textContent = "正在生成参数因果分析";
+    await pause(700);
+    parameterRows[2].classList.remove("is-highlighted");
+  }
+
+  processLabels[0].textContent = "分析完成";
+  explainProcess.classList.remove("is-processing");
+  explanationResult.classList.remove("is-generating");
+  explanationResult.classList.add("is-generated");
+  explainButtonText.textContent = "重新播放深度解读";
+  explainButton.disabled = false;
+};
+
+explainButton.addEventListener("click", runExplanation);
