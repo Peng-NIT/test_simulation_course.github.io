@@ -37,3 +37,9 @@ body:before{content:"";position:fixed;z-index:-1;inset:0;background-image:linear
 .demo-section:before{background:linear-gradient(180deg,rgba(229,241,246,.72),rgba(249,252,253,.62) 62%,rgba(249,252,253,.30))}
 .explain-section:before{background:linear-gradient(180deg,rgba(249,252,253,.30),rgba(233,243,247,.70) 45%,rgba(239,247,250,.48))}
 footer{background:rgba(248,251,252,.54)}
+
+/* Institutional identity: the supplied white mark sits on a restrained navy plaque. */
+.brand{gap:.75rem;white-space:nowrap}.brand-logo{display:flex;align-items:center;justify-content:center;width:138px;height:34px;padding:6px 9px;background:linear-gradient(135deg,#143746,#0f2b37);border:1px solid rgba(255,255,255,.16);box-shadow:0 5px 15px rgba(18,52,66,.12)}.brand-logo img{display:block;width:100%;height:100%;object-fit:contain}.brand-title{font-size:.66rem;letter-spacing:.09em}.brand-mark{display:none}
+@media(max-width:1100px){.brand-logo{width:118px;height:31px}.brand-title{font-size:.61rem}.site-header{gap:1.2rem}nav{gap:1rem}}
+@media(max-width:700px){.brand-logo{width:108px;height:29px}.brand-title{font-size:.58rem;letter-spacing:.05em}}
+@media(max-width:430px){.brand-title{display:none}.brand-logo{width:128px;height:32px}}
