@@ -71,7 +71,7 @@
             <path class="arm" d="M286 192L245 160L190 230" fill="none" stroke="#334950" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><animate attributeName="d" dur="10s" repeatCount="indefinite" values="M286 192L245 160L190 230;M286 192L235 220L165 282;M286 192L295 125L365 115;M286 192L340 150L410 107;M286 192L340 150L410 107;M286 192L245 160L190 230" keyTimes="0;.2;.48;.72;.88;1"/></path>
             <circle cx="286" cy="192" r="29" fill="#263a40"/><circle cx="286" cy="192" r="10" fill="#dce0de"/><text x="257" y="238">底座</text>
             <circle cx="190" cy="230" r="9" fill="#b88426"><animate attributeName="cx" dur="10s" repeatCount="indefinite" values="190;165;365;410;410;190" keyTimes="0;.2;.48;.72;.88;1"/><animate attributeName="cy" dur="10s" repeatCount="indefinite" values="230;282;115;107;107;230" keyTimes="0;.2;.48;.72;.88;1"/></circle>
-            <rect x="151" y="276" width="28" height="12" rx="6" fill="#b85e43"><animate attributeName="x" dur="10s" repeatCount="indefinite" values="151;151;351;396;396;151" keyTimes="0;.2;.48;.72;.88;1"/><animate attributeName="y" dur="10s" repeatCount="indefinite" values="276;276;109;101;101;276" keyTimes="0;.2;.48;.72;.88;1"/></rect>
+            <rect x="151" y="276" width="28" height="12" rx="6" fill="#b85e43"><animate attributeName="x" dur="10s" repeatCount="indefinite" values="151;151;351;396;396;396" keyTimes="0;.2;.48;.72;.88;1"/><animate attributeName="y" dur="10s" repeatCount="indefinite" values="276;276;109;101;101;101" keyTimes="0;.2;.48;.72;.88;1"/></rect>
           </svg>
         </div>
       </div>
@@ -91,7 +91,7 @@
   (and (at breaker_2 service_cart)
        (slot-safe cabinet_slot_A)))</pre>
           <dl><div><dt>安全高度 Z</dt><dd>0.56 m</dd></div><div><dt>正面退出距离</dt><dd>0.14 m</dd></div><div><dt>末端限速</dt><dd>0.18 m/s</dd></div></dl>
-          <button id="generate-explanation" type="button"><i></i><span>生成可视化深度解读</span></button>
+          <button id="generate-explanation" class="explain-cta" type="button" aria-label="生成并播放可视化深度解读"><i></i><span>生成可视化深度解读</span><b aria-hidden="true">→</b></button>
         </div>
         <div class="transform" id="explain-process"><i></i><span>等待生成</span><b>→</b><span>结构化讲解页</span><i></i></div>
         <div class="result-page is-waiting" id="explanation-result">

@@ -54,17 +54,6 @@ if (reducedMotion || !("IntersectionObserver" in window)) {
   reveals.forEach(element => observer.observe(element));
 }
 
-const flowSections = [...document.querySelectorAll("main > section:not(.hero)")];
-if (!reducedMotion && "IntersectionObserver" in window) {
-  flowSections.forEach(section => section.classList.add("flow-section"));
-  const sectionObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      entry.target.classList.toggle("section-visible", entry.isIntersecting);
-    });
-  }, { threshold: 0.08, rootMargin: "-8% 0px -8% 0px" });
-  flowSections.forEach(section => sectionObserver.observe(section));
-}
-
 const typeLine = document.querySelector(".type-line");
 const phrase = typeLine.dataset.text;
 const stageNodes = [...document.querySelectorAll(".stage-node")];
@@ -114,6 +103,7 @@ const parameterRows = [...document.querySelectorAll(".source-card dl div")];
 
 const runExplanation = async () => {
   explainButton.disabled = true;
+  explainButton.classList.remove("is-replay");
   explanationResult.classList.remove("is-generated");
   explanationResult.classList.add("is-waiting");
   processLabels[0].textContent = "准备分析";
@@ -152,6 +142,7 @@ const runExplanation = async () => {
   explanationResult.classList.remove("is-generating");
   explanationResult.classList.add("is-generated");
   explainButtonText.textContent = "重新播放深度解读";
+  explainButton.classList.add("is-replay");
   explainButton.disabled = false;
 };
 
