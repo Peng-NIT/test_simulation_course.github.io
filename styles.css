@@ -27,3 +27,13 @@ body{background:linear-gradient(180deg,#f8fafb 0,#f3f7f9 100%)}main section{scro
 @keyframes ctaBreathe{0%,100%{box-shadow:0 12px 28px rgba(214,121,40,.24)}50%{box-shadow:0 12px 34px rgba(214,121,40,.48),0 0 0 5px rgba(214,121,40,.08)}}
 @media(prefers-reduced-motion:reduce){.source-card .explain-cta{animation:none}}
 @media(max-width:950px){.hero-stage{min-height:620px}.explain-demo{grid-template-columns:1fr}.result-page{min-height:570px}}@media(max-width:580px){.condition-grid{grid-template-columns:1fr}.parameter-matrix>div{grid-template-columns:1fr}.result-page{min-height:680px}}
+
+/* Campus panorama: preserve its aspect ratio and keep it subordinate to the lesson. */
+body{position:relative;isolation:isolate;background:#f3f8fb}
+body:before{content:"";position:fixed;z-index:-1;inset:0;background-image:linear-gradient(180deg,rgba(248,251,253,.42),rgba(248,251,253,.55) 46%,rgba(248,251,253,.38)),url("assets/campus-background.png");background-repeat:no-repeat;background-position:center center;background-size:cover;pointer-events:none}
+.site-header{background:rgba(247,251,253,.84)}
+.method-strip{background:rgba(250,252,253,.72);backdrop-filter:blur(7px)}
+.narrative,.workflow,.objects,.launch{background:rgba(248,251,252,.46);backdrop-filter:blur(2px)}
+.demo-section:before{background:linear-gradient(180deg,rgba(229,241,246,.72),rgba(249,252,253,.62) 62%,rgba(249,252,253,.30))}
+.explain-section:before{background:linear-gradient(180deg,rgba(249,252,253,.30),rgba(233,243,247,.70) 45%,rgba(239,247,250,.48))}
+footer{background:rgba(248,251,252,.54)}
