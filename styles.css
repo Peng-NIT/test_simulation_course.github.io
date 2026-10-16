@@ -29,14 +29,16 @@ body{background:linear-gradient(180deg,#f8fafb 0,#f3f7f9 100%)}main section{scro
 @media(max-width:950px){.hero-stage{min-height:620px}.explain-demo{grid-template-columns:1fr}.result-page{min-height:570px}}@media(max-width:580px){.condition-grid{grid-template-columns:1fr}.parameter-matrix>div{grid-template-columns:1fr}.result-page{min-height:680px}}
 
 /* Campus panorama: preserve its aspect ratio and keep it subordinate to the lesson. */
+:root{--glass-surface:rgba(247,251,253,.32);--glass-surface-strong:rgba(247,251,253,.54);--glass-line:rgba(93,139,157,.14)}
 body{position:relative;isolation:isolate;background:#f3f8fb}
 body:before{content:"";position:fixed;z-index:-1;inset:0;background-image:linear-gradient(180deg,rgba(248,251,253,.14),rgba(248,251,253,.28) 46%,rgba(248,251,253,.16)),url("assets/campus-background.png");background-repeat:no-repeat;background-position:center center;background-size:cover;filter:saturate(1.18) contrast(1.04);pointer-events:none}
-.site-header{background:rgba(247,251,253,.84)}
-.method-strip{background:rgba(250,252,253,.72);backdrop-filter:blur(7px)}
-.narrative,.workflow,.objects,.launch{background:rgba(248,251,252,.46);backdrop-filter:blur(2px)}
-.demo-section:before{background:linear-gradient(180deg,rgba(229,241,246,.72),rgba(249,252,253,.62) 62%,rgba(249,252,253,.30))}
-.explain-section:before{background:linear-gradient(180deg,rgba(249,252,253,.30),rgba(233,243,247,.70) 45%,rgba(239,247,250,.48))}
-footer{background:rgba(248,251,252,.54)}
+.site-header{background:rgba(247,251,253,.78)}
+.method-strip{background:var(--glass-surface-strong);border-color:var(--glass-line);backdrop-filter:blur(7px)}
+.narrative,.workflow,.objects,.launch{background:transparent;backdrop-filter:none}
+.narrative:before,.workflow:before,.objects:before,.launch:before{content:"";position:absolute;z-index:-1;inset:0 max(0px,calc((1240px - 100vw)/2));background:var(--glass-surface);border-top:1px solid var(--glass-line);backdrop-filter:blur(2px);pointer-events:none}
+.demo-section:before{background:linear-gradient(180deg,rgba(226,239,244,.48),rgba(248,251,252,.36) 62%,rgba(248,251,252,.18));border-top:1px solid var(--glass-line)}
+.explain-section:before{background:linear-gradient(180deg,rgba(248,251,252,.18),rgba(232,242,246,.46) 45%,rgba(239,247,250,.30));border-top:1px solid var(--glass-line)}
+footer{background:rgba(248,251,252,.38);backdrop-filter:blur(2px)}
 
 /* Institutional identity: retain the logo's alpha channel and recolor it for a light header. */
 .brand{gap:.85rem;white-space:nowrap}.brand-logo{display:flex;align-items:center;justify-content:center;width:158px;height:38px}.brand-logo img{display:block;width:100%;height:100%;object-fit:contain;filter:brightness(0) saturate(100%) invert(15%) sepia(18%) saturate(1340%) hue-rotate(151deg) brightness(94%) contrast(94%);opacity:.94}.brand-title{font-size:.66rem;letter-spacing:.09em}.brand-mark{display:none}
