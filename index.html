@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="面向本科教学的强电检修机械臂 AI 虚拟仿真实验。">
+  <meta name="description" content="大模型赋能的面向电力场景机械臂虚拟仿真实验">
   <meta name="theme-color" content="#f4f3ef">
   <title>强电检修机械臂虚拟仿真实验</title>
   <link rel="stylesheet" href="styles.css">
@@ -11,29 +11,29 @@
 <body>
   <div class="progress" aria-hidden="true"><i></i></div>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="南京工程学院机械臂虚拟仿真实验·返回顶部"><span class="brand-logo"><img src="assets/nit-logo.png" alt="南京工程学院"></span><span class="brand-title">机械臂虚拟仿真实验</span></a>
+    <a class="brand" href="#top" aria-label="南京工程学院人工智能+虚拟仿真实验·返回顶部"><span class="brand-logo"><img src="assets/nit-logo.png" alt="南京工程学院"></span><span class="brand-title">机械臂虚拟仿真实验</span></a>
     <nav aria-label="页面导航"><a href="#concept">实验概述</a><a href="#demonstration">技术演示</a><a href="#workflow">实验流程</a></nav>
-    <span class="header-note">本科教学 · AI 虚拟仿真</span>
+    <span class="header-note">本科教学 · AI+ 虚拟仿真</span>
   </header>
 
   <main id="top">
     <section class="hero section-pad">
       <div class="hero-copy reveal">
         <div class="eyebrow"><span></span>机器人规划与控制综合实验</div>
-        <h1>在虚拟环境中，<br><em>理解规划与控制。</em></h1>
+        <h1>大模型赋能<br><em>面向电力场景机械臂虚拟仿真实验</em></h1>
         <p>面向强电检修场景，将自然语言任务理解、PDDL 符号规划、六自由度运动控制与 MuJoCo 虚拟验证组成一条可观察的教学链路。</p>
         <div class="hero-index"><span><b>01</b>任务理解</span><span><b>02</b>符号规划</span><span><b>03</b>运动控制</span><span><b>04</b>虚拟验证</span></div>
       </div>
       <div class="hero-stage reveal delay-1" aria-label="从任务输入到虚拟验证的动态流程">
-        <div class="stage-head"><span><i></i>TEACHING PIPELINE</span><b>LIVE</b></div>
-        <div class="stage-prompt"><small>NATURAL LANGUAGE</small><p class="type-line" data-text="将故障熔断器放入回收区"></p></div>
+        <div class="stage-head"><span><i></i>实验流程</span><b>LIVE</b></div>
+        <div class="stage-prompt"><small>自然语言输入/small><p class="type-line" data-text="将故障熔断器放入回收区"></p></div>
         <div class="stage-flow">
           <div class="stage-node" data-stage="0"><i>01</i><div><strong>意图识别</strong><span>对象 faulty_fuse_1 · 目标 recycle_area</span></div></div><b class="pulse-line" data-line="0"></b>
           <div class="stage-node" data-stage="1"><i>02</i><div><strong>PDDL 规划</strong><span>(:goal (at faulty_fuse_1 recycle_area))</span></div></div><b class="pulse-line" data-line="1"></b>
           <div class="stage-node" data-stage="2"><i>03</i><div><strong>6DOF 轨迹</strong><span>5 路点 · q1–q6 · 安全高度 0.52 m</span></div></div><b class="pulse-line" data-line="2"></b>
           <div class="stage-node gold" data-stage="3"><i>04</i><div><strong>虚拟验证</strong><span>轨迹连续 · 无碰撞 · 任务完成</span></div></div>
         </div>
-        <div class="stage-foot"><span>AI + PDDL + 6DOF</span><span>MUJOCO</span></div>
+        <div class="stage-foot"><span>人工智能+ 6自由度机械臂</span><span>MUJOCO</span></div>
       </div>
     </section>
 
@@ -41,11 +41,11 @@
 
     <section class="section-pad narrative" id="concept">
       <div class="section-label reveal">01 / 实验概述</div>
-      <div class="heading-grid reveal"><h2>不只看最终动画，<br>而是理解每个中间结果。</h2><p>真实强电环境不适合反复试错。实验将高层任务、符号规划和连续运动分层呈现，让学生能够检查、修改、比较并解释结果。</p></div>
+      <div class="heading-grid reveal"><h2>大语言赋能<br>实现对机械臂操作过程的理解</h2><p>真实强电环境不适合反复试错。实验将高层任务、符号规划和连续运动分层呈现，让学生能够检查、修改、比较并解释结果。</p></div>
       <div class="principles">
-        <article class="reveal"><span>01</span><h3>AI 任务理解</h3><p>将自然语言限定在实验对象、区域与教学目标范围内。</p></article>
-        <article class="reveal delay-1"><span>02</span><h3>可检查的规划</h3><p>同时展示 Problem PDDL、Domain PDDL 和动作序列。</p></article>
-        <article class="reveal delay-2"><span>03</span><h3>连续运动验证</h3><p>通过路点、关节角与仿真结果连接高层任务和机械臂动作。</p></article>
+        <article class="reveal"><span>01</span><h3>基于大模型的任务理解</h3><p>将生成代码限定在实验对象、区域与教学目标范围内。</p></article>
+        <article class="reveal delay-1"><span>02</span><h3>大模型赋能的任务规划和解释</h3><p>同时展示 Problem PDDL、Domain PDDL 和动作序列。</p></article>
+        <article class="reveal delay-2"><span>03</span><h3>基于仿真平台的连续运动验证</h3><p>通过路点、关节角与仿真结果连接高层任务和机械臂动作。</p></article>
       </div>
     </section>
 
@@ -79,10 +79,10 @@
 
     <section class="explain-section section-pad">
       <div class="section-label reveal">03 / AI 深度解读</div>
-      <div class="heading-grid reveal"><h2>把代码与参数，<br>转化为可视的教学解释。</h2><p>AI 根据当前 PDDL 和运动参数提取任务目标、规划关系与参数影响，并生成层次清晰、便于阅读的结构化教学讲解。</p></div>
+      <div class="heading-grid reveal"><h2>把代码与参数，<br>转化为可视的教学解释。</h2><p>大语言模型根据当前 PDDL 和运动参数提取任务目标、规划关系与参数影响，并生成层次清晰、便于阅读的结构化教学讲解。</p></div>
       <div class="explain-demo reveal">
         <div class="source-card">
-          <div class="source-head"><span>CURRENT CONTEXT</span><b>PDDL + MOTION</b></div>
+          <div class="source-head"><span>输入的PDDL信息</span><b>基于大语言模型的PDDL转译</b></div>
           <pre>(:init
   (at breaker_2 cabinet_slot_A)
   (power-isolated feeder_A)
@@ -105,15 +105,13 @@
             <div class="teaching-note result-reveal r5"><b>风险判读</b><span>若未满足 power-isolated，规划在语义层即被拒绝；运动学可达不等于任务允许执行。</span></div>
           </div>
         </div>
-      </div>
-      <p class="demo-caption">功能演示不调用 API；实验程序将根据学生当前内容动态生成解读。</p>
     </section>
 
     <section class="workflow section-pad" id="workflow">
       <div class="section-label reveal">04 / 实验流程</div>
-      <div class="heading-grid reveal"><h2>五个步骤，建立从任务到轨迹的因果联系。</h2><p>学生从场景配置出发，逐步检查任务理解、符号规划、运动参数与仿真结果。</p></div>
+      <div class="heading-grid reveal"><h2>五个步骤，建立从自然语言到机械臂运动的因果联系。</h2><p>学生从场景配置出发，逐步检查任务理解、符号规划、运动参数与仿真结果。</p></div>
       <div class="steps">
-        <article class="reveal"><b>01</b><small>CONFIGURE</small><h3>场景配置</h3><p>添加检修对象，理解位置和操作差异。</p></article><article class="reveal"><b>02</b><small>PLAN</small><h3>PDDL 规划</h3><p>输入自然语言，检查 Problem、Domain 与计划。</p></article><article class="reveal"><b>03</b><small>MOTION</small><h3>运动参数</h3><p>调整安全高度、接近距离、路点与关节角。</p></article><article class="reveal"><b>04</b><small>EXECUTE</small><h3>仿真执行</h3><p>观察接近、抓取、搬运与放置过程。</p></article><article class="reveal"><b>05</b><small>ANALYZE</small><h3>结果分析</h3><p>对比关节曲线和末端轨迹，解释参数影响。</p></article>
+        <article class="reveal"><b>01</b><small>初始配置</small><h3>场景配置</h3><p>添加检修对象，理解位置和操作差异。</p></article><article class="reveal"><b>02</b><small>任务规划</small><h3>面向机械臂的规划</h3><p>输入自然语言，大模型赋能的任务规划和解释。</p></article><article class="reveal"><b>03</b><small>机械臂控制</small><h3>运动参数</h3><p>调整安全高度、接近距离、路点与关节角。</p></article><article class="reveal"><b>04</b><small>运行代码</small><h3>仿真执行</h3><p>观察接近、抓取、搬运与放置过程。</p></article><article class="reveal"><b>05</b><small>结果分析</small><h3>参数可视化，导出和重配置</h3><p>对比关节曲线和末端轨迹，解释参数影响。</p></article>
       </div>
     </section>
 
@@ -126,14 +124,13 @@
     </section>
 
     <section class="outcomes section-pad">
-      <div class="outcome-copy reveal"><div class="section-label light">06 / 学习目标</div><h2>从“看见运动”，<br>到“解释运动”。</h2><p>课程目标不是得到一次看起来正确的动画，而是建立任务语义、符号规划、运动参数和仿真结果之间的因果联系。</p></div>
-      <div class="outcome-list reveal"><div><b>01</b><span>判断 AI 是否正确理解任务</span></div><div><b>02</b><span>解读 Domain 与 Problem PDDL</span></div><div><b>03</b><span>理解离散规划与连续运动的连接</span></div><div><b>04</b><span>比较轨迹参数与六关节参数</span></div><div><b>05</b><span>根据仿真与轨迹数据验证结果</span></div></div>
+      <div class="outcome-copy reveal"><div class="section-label light">06 / 学习目标</div><h2>从“看见运动”，<br>到“解释运动”。</h2><p>建立任务语义、符号规划、运动参数和仿真结果之间的因果联系。</p></div>
+      <div class="outcome-list reveal"><div><b>01</b><span>大模型增强的任务理解</span></div><div><b>02</b><span>大模型赋能解读任务规划</span></div><div><b>03</b><span>通过仿真理解离散规划与连续运动的连接</span></div><div><b>04</b><span>比较轨迹参数与六关节参数</span></div><div><b>05</b><span>根据仿真与轨迹数据验证结果</span></div></div>
     </section>
 
     <section class="launch section-pad" id="launch">
       <div class="launch-meta reveal"><span>VIRTUAL LABORATORY</span><span>FOR EDUCATION ONLY</span></div>
-      <div class="launch-grid reveal"><div><div class="section-label">07 / 进入实验</div><h2>从场景配置开始，<br>完成五步虚拟仿真实验。</h2></div><div><p>进入独立的 Streamlit 实验程序，进行对象配置、PDDL 规划、运动参数调整、仿真执行与结果分析。</p><a class="launch-button" id="streamlit-link" href="#" target="_blank" rel="noopener"><span>访问 Streamlit App</span><i>↗</i></a><small id="link-status">实验程序将在新页面中打开</small></div></div>
-      <div class="safety"><b>教学边界</b><p>本实验中的 AI 输出、PDDL 计划、运动参数与仿真结果仅用于本科教学，不构成真实带电检修方案或设备控制指令。</p></div>
+      <div class="launch-grid reveal"><div><div class="section-label">07 / 进入实验</div><h2>从场景配置开始，<br>完成五步虚拟仿真实验。</h2></div><div><p>进入独立的实验程序，进行场景配置、任务规划、运动参数调整、仿真执行与结果分析。</p><a class="launch-button" id="streamlit-link" href="#" target="_blank" rel="noopener"><span>访问实验页面</span><i>↗</i></a><small id="link-status">实验程序将在新页面中打开</small></div></div>
     </section>
   </main>
 
