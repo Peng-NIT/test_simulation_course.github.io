@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#f4f3ef">
   <title>强电检修机械臂虚拟仿真实验</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="visits.css">
 </head>
 <body>
   <div class="progress" aria-hidden="true"><i></i></div>
@@ -132,10 +133,20 @@
       <div class="launch-meta reveal"><span>VIRTUAL LABORATORY</span><span>FOR EDUCATION ONLY</span></div>
       <div class="launch-grid reveal"><div><div class="section-label">07 / 进入实验</div><h2>从场景配置开始，<br>完成五步虚拟仿真实验。</h2></div><div><p>进入独立的实验程序，进行场景配置、任务规划、运动参数调整、仿真执行与结果分析。</p><a class="launch-button" id="streamlit-link" href="#" target="_blank" rel="noopener"><span>访问实验页面</span><i>↗</i></a><small id="link-status">实验程序将在新页面中打开</small></div></div>
     </section>
+
+    <section class="visits-section section-pad" aria-labelledby="counter-title">
+      <div class="counter-card">
+        <div class="counter-heading"><h2 id="counter-title">累计访问量</h2><span><i></i>访问记录</span></div>
+        <div class="visit-counter" id="visit-counter" role="img" aria-label="累计访问量 1000"><span class="counter-fallback">1000</span></div>
+        <p id="visit-status" class="visit-status" role="status">正在读取访问记录…</p>
+        <div class="counter-footer"><span>连接知识与实践</span><span>AI + ROBOTICS</span></div>
+      </div>
+    </section>
   </main>
 
   <footer><a class="brand" href="#top"><span class="brand-mark"></span><span>机械臂虚拟仿真实验</span></a><p>强电检修 · 6DOF 机械臂 · 本科教学版</p></footer>
   <script src="config.js"></script>
   <script src="script.js"></script>
+  <script src="visits.js"></script>
 </body>
 </html>
