@@ -92,7 +92,7 @@
 
     <section class="authoring-section section-pad" id="authoring">
       <div class="section-label reveal">03 / PDDL 编写方式</div>
-      <div class="heading-grid reveal"><h2>描述检修任务，<br>由大语言模型生成 PDDL 草稿。</h2><p>大语言模型从自然语言中提取对象、初始状态、目标和安全路线，生成可审阅的 Problem PDDL；学生确认后，代码才能进入规划器。</p></div>
+      <div class="heading-grid reveal"><h2>描述检修任务，<br>由大语言模型生成 PDDL 草稿。</h2><p>大语言模型从自然语言中提取对象、初始状态、目标和安全路线，生成可审阅的PDDL代码；学生确认后，代码才能进入规划器。</p></div>
       <div class="authoring-demo reveal">
         <div class="authoring-input">
           <div class="ai-author-head"><span><i></i>LLM PDDL GENERATOR</span><b>课程知识边界</b></div>
@@ -105,17 +105,17 @@
         <div class="authoring-review" aria-live="polite">
           <div class="review-head"><span>AI GENERATION PIPELINE</span><b>必须由学生确认</b></div>
           <div class="review-step active"><i>01</i><div><small>大模型理解</small><strong>提取对象、初始状态、目标与约束</strong></div></div>
-          <div class="review-step"><i>02</i><div><small>代码生成</small><strong>逐行生成 Problem PDDL 草稿</strong></div></div>
-          <div class="review-step"><i>03</i><div><small>一致性检查</small><strong>与 Domain 谓词和动作定义核对</strong></div></div>
+          <div class="review-step"><i>02</i><div><small>代码生成</small><strong>逐行生成PDDL问题域代码</strong></div></div>
+          <div class="review-step"><i>03</i><div><small>一致性检查</small><strong>与领域谓词和动作定义核对</strong></div></div>
           <div class="review-step"><i>04</i><div><small>学生审核</small><strong>确认或修改后才允许生成 Plan</strong></div></div>
-          <p id="author-note">AI 负责生成可解释草稿，学生负责验证代码是否忠实表达任务与安全约束。</p>
+          <p id="author-note">大语言模型负责生成可解释草稿，学生负责验证代码是否忠实表达任务与安全约束。</p>
         </div>
       </div>
     </section>
 
     <section class="explain-section section-pad">
       <div class="section-label reveal">04 / AI 深度解读</div>
-      <div class="heading-grid reveal"><h2>把代码、参数与风险，<br>转化为可视的教学解释。</h2><p>大语言模型围绕当前实验场景回答，解释 Domain、Problem、Plan、双臂分工与安全参数；通过分层提示引导学生自主完成，而非绕过实验直接给出结果。</p></div>
+      <div class="heading-grid reveal"><h2>把代码、参数与风险，<br>转化为可视的教学解释。</h2><p>大语言模型围绕当前实验场景回答，解释领域、问题和规划代码双臂分工与安全参数；通过分层提示引导学生自主完成，而非绕过实验直接给出结果。</p></div>
       <div class="explain-demo reveal">
         <div class="source-card">
           <div class="source-head"><span>输入的PDDL信息</span><b>基于大语言模型的PDDL转译</b></div>
@@ -146,10 +146,10 @@
 
     <section class="practice-section section-pad" id="practice">
       <div class="section-label reveal">05 / 学生交互练习</div>
-      <div class="heading-grid reveal"><h2>填补关键条件，<br>让规划继续向下执行。</h2><p>填空与选择不是独立题目：学生补全的谓词和路线会进入 Problem PDDL，并直接决定动作计划与后续仿真。</p></div>
+      <div class="heading-grid reveal"><h2>填补关键条件，<br>让规划继续向下执行。</h2><p>填空与选择：学生补全的谓词和路线会进入PDDL代码，并直接决定动作计划与后续仿真。</p></div>
       <div class="practice-demo reveal">
         <div class="question-card">
-          <div class="case-head"><span>QUESTION 02 / 04</span><b>Problem PDDL</b></div>
+          <div class="case-head"><span>随堂测试题</span><b>基于当前任务场景的考题</b></div>
           <p>带电区位于工作台中部，应选择哪条可用路线完成导线转移？</p>
           <pre>(:init
   (hazard-mapped live_zone_1)
