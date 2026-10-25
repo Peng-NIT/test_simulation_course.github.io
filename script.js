@@ -147,3 +147,153 @@ const runExplanation = async () => {
 };
 
 explainButton.addEventListener("click", runExplanation);
+
+const generatedPddl = `(:init
+  (at wire_1 wire_area)
+  (hazard-mapped live_zone_1)
+  (route-open route_left))
+(:goal
+  (and (stripped wire_1)
+       (at wire_1 terminal_slot)))`;
+const pddlDraft = document.querySelector("#pddl-draft");
+const draftState = document.querySelector("#draft-state");
+const authorRun = document.querySelector("#author-run");
+const authorNote = document.querySelector("#author-note");
+const reviewSteps = [...document.querySelectorAll(".review-step")];
+let authorRunId = 0;
+
+authorRun.addEventListener("click", async () => {
+  const runId = ++authorRunId;
+  authorRun.disabled = true;
+  reviewSteps.forEach((step, index) => {
+    step.classList.toggle("active", index === 0);
+    step.classList.remove("complete");
+  });
+  authorNote.textContent = "大语言模型正在把对象、目标、约束和协作关系映射为 PDDL。";
+  draftState.textContent = "分析任务语义";
+  await pause(reducedMotion ? 0 : 600);
+  reviewSteps[0].classList.replace("active", "complete");
+  reviewSteps[1].classList.add("active");
+  pddlDraft.textContent = "";
+  pddlDraft.classList.add("is-writing");
+  draftState.textContent = "AI 正在生成";
+  for (let index = 1; index <= generatedPddl.length; index += 1) {
+    if (runId !== authorRunId) return;
+    pddlDraft.textContent = generatedPddl.slice(0, index);
+    if (!reducedMotion) await pause(14);
+  }
+  pddlDraft.classList.remove("is-writing");
+  reviewSteps[1].classList.replace("active", "complete");
+  reviewSteps[2].classList.add("active");
+  draftState.textContent = "检查谓词中";
+  await pause(reducedMotion ? 0 : 650);
+  if (runId !== authorRunId) return;
+  reviewSteps[2].classList.replace("active", "complete");
+  reviewSteps[3].classList.add("active");
+  draftState.textContent = "AI 草稿 · 待确认";
+  authorNote.textContent = "草稿已通过示例检查；学生确认对象、目标和安全路线后，才允许交给规划器。";
+  authorRun.querySelector("span").textContent = "重新生成 PDDL 草稿";
+  authorRun.disabled = false;
+});
+
+const choiceButtons = [...document.querySelectorAll(".choice-list button")];
+const hintButton = document.querySelector("#hint-choice");
+const submitChoice = document.querySelector("#submit-choice");
+const blankToken = document.querySelector("#blank-token");
+const choiceCode = document.querySelector("#choice-code");
+const choiceFeedback = document.querySelector("#choice-feedback");
+const choiceHint = document.querySelector("#choice-hint");
+const traceLines = [...document.querySelectorAll(".trace-line")];
+let selectedChoice = "";
+
+choiceButtons.forEach(button => button.addEventListener("click", () => {
+  selectedChoice = button.dataset.answer;
+  choiceButtons.forEach(item => item.classList.toggle("selected", item === button));
+  choiceButtons.forEach(item => item.classList.remove("correct", "wrong"));
+  blankToken.textContent = button.textContent;
+  choiceCode.textContent = `(${button.textContent} route_left)`;
+  choiceFeedback.textContent = "已补全，等待验证前置条件";
+  traceLines[0].classList.add("complete");
+  traceLines[1].classList.add("active");
+  traceLines[2].classList.remove("active", "complete");
+  traceLines[3].classList.remove("active", "complete");
+}));
+
+hintButton.addEventListener("click", () => {
+  choiceHint.textContent = "AI 提示：Plan 只能使用当前处于可通行状态的路线。请比较 open、blocked 与 holding 三个谓词的语义。";
+  choiceHint.classList.add("is-shown");
+});
+
+submitChoice.addEventListener("click", async () => {
+  if (!selectedChoice) {
+    choiceFeedback.textContent = "请先选择一个谓词";
+    return;
+  }
+  const selectedButton = choiceButtons.find(button => button.dataset.answer === selectedChoice);
+  const isCorrect = selectedChoice === "open";
+  selectedButton.classList.add(isCorrect ? "correct" : "wrong");
+  traceLines[1].classList.replace("active", "complete");
+  traceLines[2].classList.add("active");
+  choiceFeedback.textContent = isCorrect ? "前置条件成立，Plan 已生成" : "前置条件不成立，规划在此停止";
+  await pause(reducedMotion ? 0 : 650);
+  if (isCorrect) {
+    traceLines[2].classList.replace("active", "complete");
+    traceLines[3].classList.add("active");
+    choiceHint.textContent = "正确：route-open 既补全了 Problem，也为 safe-route 动作提供了前置条件。";
+  } else {
+    choiceHint.textContent = "当前谓词无法表达“路线可用”。请根据提示修改后再次提交。";
+  }
+});
+
+const failureCases = {
+  route: {
+    code: "(route-selected route_direct)\n(clearance live_zone_1 0.00)",
+    rule: "进入带电区域安全包络",
+    fix: "改用 route_left，并重新规划"
+  },
+  height: {
+    code: "safe_z = 0.82 m\nline_clearance = 0.03 m",
+    rule: "末端与高压线净距小于阈值",
+    fix: "降低 safe_z，并重新检查整段轨迹"
+  },
+  arms: {
+    code: "left_hold = true\narm_clearance = 0.01 m",
+    rule: "左右臂连杆安全距离不足",
+    fix: "增加等待路点，错开双臂动作时序"
+  }
+};
+const caseButtons = [...document.querySelectorAll(".case-tabs button")];
+const riskScene = document.querySelector("#risk-scene");
+const failureCode = document.querySelector("#failure-code");
+const failureRule = document.querySelector("#failure-rule");
+const failureFix = document.querySelector("#failure-fix");
+const failureStatus = document.querySelector("#failure-status");
+const playFailure = document.querySelector("#play-failure");
+let activeFailure = "route";
+
+const setFailureCase = name => {
+  activeFailure = name;
+  caseButtons.forEach(button => button.classList.toggle("active", button.dataset.case === name));
+  riskScene.className = `risk-scene case-${name}`;
+  failureCode.textContent = failureCases[name].code;
+  failureRule.textContent = failureCases[name].rule;
+  failureFix.textContent = failureCases[name].fix;
+  failureStatus.textContent = "等待执行";
+  failureCode.parentElement.classList.remove("is-error");
+  playFailure.querySelector("span").textContent = "播放错误执行";
+};
+
+caseButtons.forEach(button => button.addEventListener("click", () => setFailureCase(button.dataset.case)));
+playFailure.addEventListener("click", async () => {
+  playFailure.disabled = true;
+  riskScene.className = `risk-scene case-${activeFailure} is-running`;
+  failureStatus.textContent = "逐帧检查中";
+  playFailure.querySelector("span").textContent = "正在接近危险边界…";
+  await pause(reducedMotion ? 0 : 2450);
+  riskScene.className = `risk-scene case-${activeFailure} is-stopped`;
+  failureStatus.textContent = "已拦截";
+  failureCode.parentElement.classList.add("is-error");
+  playFailure.querySelector("span").textContent = "重新播放错误执行";
+  playFailure.disabled = false;
+});
+setFailureCase(activeFailure);
