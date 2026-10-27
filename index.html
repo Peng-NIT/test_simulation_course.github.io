@@ -21,7 +21,7 @@
     <section class="hero section-pad">
       <div class="hero-copy reveal">
         <div class="eyebrow"><span></span>机器人规划与控制综合实验</div>
-        <h1>大语言模型驱动的<br><em>带电作业机器人虚拟仿真实验</em></h1>
+        <h1><span class="hero-title-line">大语言模型驱动的</span><br><em>带电作业机器人虚拟仿真实验</em></h1>
         <p>面向带电检修教学场景，将自然语言任务理解、双臂 PDDL 协作规划、12DOF 运动控制与 MuJoCo 安全验证组成一条可观察、可修改、可追溯的教学链路。</p>
         <div class="hero-index"><span><b>01</b>AI任务理解</span><span><b>02</b>双臂规划</span><span><b>03</b>风险绕行</span><span><b>04</b>虚拟验证</span></div>
       </div>
@@ -67,20 +67,18 @@
         </div>
         <div class="robot-panel">
           <div class="panel-head"><span>04 / DUAL-ARM LIVE-WORK MOTION</span><b><i></i>DEMO</b></div>
-          <svg viewBox="0 0 560 380" role="img" aria-label="双臂机器人在检修工作台前自然协作完成剥线接线">
-            <defs><linearGradient id="bench" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#f2f6f7"/><stop offset="1" stop-color="#dfe9ec"/></linearGradient><linearGradient id="robotBody" x1="0" x2="1"><stop stop-color="#dfe9ed"/><stop offset=".5" stop-color="#f8fbfc"/><stop offset="1" stop-color="#b9ccd3"/></linearGradient></defs>
-            <rect width="560" height="380" fill="#f8fbfc"/><path d="M0 302H560V380H0Z" fill="#edf3f5"/><path d="M42 226H518L492 300H68Z" fill="url(#bench)" stroke="#9fb5be"/><path d="M70 300H490" stroke="#78919b" stroke-width="5"/>
-            <rect x="96" y="174" width="98" height="42" rx="4" fill="#e3f0f2" stroke="#4f8b91"/><text x="111" y="164">导线准备区</text><rect x="375" y="164" width="105" height="52" rx="4" fill="#eee9f7" stroke="#7563a7"/><circle cx="432" cy="190" r="10" fill="none" stroke="#7563a7" stroke-width="3"/><text x="388" y="153">剥线 / 端子工位</text>
-            <rect x="245" y="149" width="70" height="68" rx="5" fill="rgba(204,62,49,.12)" stroke="#d46b59" stroke-dasharray="6 5"/><text x="258" y="139" fill="#b24d3d">带电区</text><path d="M78 57H484M78 72H484M78 87H484" stroke="#c15b62" stroke-width="4" opacity=".42"/><text x="405" y="48" fill="#a53d45">高压线</text>
-            <path d="M239 317H321L338 359H222Z" fill="#8da5ae" stroke="#667f89"/><path d="M250 183Q280 159 310 183L323 316H237Z" fill="url(#robotBody)" stroke="#78929d"/><ellipse cx="280" cy="183" rx="31" ry="20" fill="#c9d9df" stroke="#78929d"/>
-            <circle cx="244" cy="191" r="18" fill="#e8f0f3" stroke="#587682"/><circle cx="316" cy="191" r="18" fill="#e8f0f3" stroke="#587682"/>
-            <path d="M244 191L195 218L168 187" fill="none" stroke="#c5d6dc" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"><animate attributeName="d" dur="7s" repeatCount="indefinite" values="M244 191L195 218L168 187;M244 191L211 229L236 241;M244 191L211 229L236 241;M244 191L195 218L168 187" keyTimes="0;.34;.72;1"/></path>
-            <path d="M316 191L365 217L405 190" fill="none" stroke="#c5d6dc" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"><animate attributeName="d" dur="7s" repeatCount="indefinite" values="M316 191L365 217L405 190;M316 191L354 229L323 241;M316 191L356 226L326 238;M316 191L365 217L405 190" keyTimes="0;.34;.72;1"/></path>
-            <circle cx="195" cy="218" r="12" fill="#eef4f6" stroke="#587682"><animate attributeName="cx" dur="7s" repeatCount="indefinite" values="195;211;211;195" keyTimes="0;.34;.72;1"/><animate attributeName="cy" dur="7s" repeatCount="indefinite" values="218;229;229;218" keyTimes="0;.34;.72;1"/></circle><circle cx="365" cy="217" r="12" fill="#eef4f6" stroke="#587682"><animate attributeName="cx" dur="7s" repeatCount="indefinite" values="365;354;356;365" keyTimes="0;.34;.72;1"/><animate attributeName="cy" dur="7s" repeatCount="indefinite" values="217;229;226;217" keyTimes="0;.34;.72;1"/></circle>
-            <g><rect x="151" y="179" width="34" height="16" rx="5" fill="#596f78"><animate attributeName="x" dur="7s" repeatCount="indefinite" values="151;220;220;151" keyTimes="0;.34;.72;1"/><animate attributeName="y" dur="7s" repeatCount="indefinite" values="179;233;233;179" keyTimes="0;.34;.72;1"/></rect><rect x="392" y="182" width="28" height="16" rx="5" fill="#596f78"><animate attributeName="x" dur="7s" repeatCount="indefinite" values="392;309;312;392" keyTimes="0;.34;.72;1"/><animate attributeName="y" dur="7s" repeatCount="indefinite" values="182;233;230;182" keyTimes="0;.34;.72;1"/></rect></g>
-            <path d="M224 241H336" stroke="#d77b42" stroke-width="7" stroke-linecap="round"><animate attributeName="d" dur="7s" repeatCount="indefinite" values="M224 241H336;M236 241H324;M236 241H324;M224 241H336" keyTimes="0;.34;.72;1"/></path><path d="M327 235L338 241L327 247" fill="none" stroke="#f2b16e" stroke-width="2"/>
-            <text x="224" y="339">共享基座 · 双臂小范围协作</text><text x="203" y="270" class="gold">左臂稳定持线</text><text x="328" y="270" class="gold">右臂执行剥线</text>
-          </svg>
+          <div class="webgl-lab" id="webgl-lab" aria-label="可交互双臂带电检修三维场景">
+            <div class="webgl-canvas" id="webgl-canvas"></div>
+            <div class="webgl-tools" aria-label="三维场景视角">
+              <button type="button" data-webgl-view="overview" class="active">全景</button>
+              <button type="button" data-webgl-view="top">俯视</button>
+              <button type="button" data-webgl-view="robot">双臂</button>
+              <button type="button" data-webgl-view="hazard">危险区</button>
+            </div>
+            <div class="webgl-guide"><small>SELECTED OBJECT</small><strong id="webgl-title">双臂协作机器人</strong><p id="webgl-copy">两条6DOF机械臂共享基座，主臂执行操作，辅臂稳定工件或设施。</p><span id="webgl-tag">双臂避碰</span></div>
+            <div class="webgl-hint">拖动旋转 · 滚轮缩放 · 点击对象查看说明</div>
+            <div class="webgl-loading" id="webgl-loading">正在载入三维教学场景…</div>
+          </div>
         </div>
       </div>
       <div class="safety-grid reveal">
@@ -229,6 +227,8 @@
   <footer><a class="brand" href="#top"><span class="brand-mark"></span><span>双臂机器人虚拟仿真实验</span></a><p>强电检修教学 · 双6DOF机器人 · 大语言模型 + 虚拟仿真</p></footer>
   <script src="config.js"></script>
   <script src="script.js"></script>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script>
+  <script type="module" src="webgl-demo.js?v=3"></script>
   <script src="visits.js"></script>
 </body>
 </html>
