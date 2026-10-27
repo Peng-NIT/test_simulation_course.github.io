@@ -56,14 +56,14 @@
 
     <section class="demo-section section-pad" id="demonstration">
       <div class="section-label reveal">02 / 任务转换演示</div>
-      <div class="heading-grid reveal"><h2>从一句指令，<br>到一次双臂安全协作。</h2><p>任务先被表达为可阅读的符号目标，再生成左右臂分工、带电区绕行路线和连续轨迹。</p></div>
+      <div class="heading-grid reveal"><h2>从检修意图，<br>到三维安全路径。</h2><p>当前WebGL场景将双臂机器人、协作工位、随机带电区与上方高压线同时呈现，帮助学生理解符号任务如何落实为空间约束。</p></div>
       <div class="demo-grid reveal">
         <div class="code-story">
-          <div class="story-step"><small>01 / TASK</small><strong>双臂协作将待接导线剥线后接入端子槽</strong></div>
+          <div class="story-step"><small>01 / TASK</small><strong>识别剥线接线工位，双臂协作完成导线端接，并绕开带电区域</strong></div>
           <div class="story-arrow">↓</div>
-          <div class="code-panel"><small>02 / PDDL SAFETY + GOAL</small><code><i>(hazard-mapped wire_strip_station)</i><i>(route-open route_left)</i><i>(:goal (and (stripped wire_1)</i><i>&nbsp;&nbsp;(at wire_1 terminal_slot)))</i></code></div>
+          <div class="code-panel"><small>02 / PDDL SCENE + SAFETY</small><code><i>(at wire_1 wire_area)</i><i>(station-ready wire_strip_station)</i><i>(hazard-mapped live_zone_1)</i><i>(route-open route_left)</i><i>(below-line-envelope left_arm)</i></code></div>
           <div class="story-arrow">↓</div>
-          <div class="action-row"><small>03 / DUAL-ARM PLAN</small><div><b>hold</b><i></i><b>strip</b><i></i><b>route</b><i></i><b>insert</b></div></div>
+          <div class="action-row"><small>03 / DUAL-ARM PLAN</small><div><b>locate</b><i></i><b>hold</b><i></i><b>route-left</b><i></i><b>strip</b><i></i><b>insert</b></div></div>
         </div>
         <div class="robot-panel">
           <div class="panel-head"><span>04 / DUAL-ARM LIVE-WORK MOTION</span><b><i></i>DEMO</b></div>
@@ -169,12 +169,16 @@
 
     <section class="failure-section section-pad" id="failure">
       <div class="section-label reveal">06 / 错误案例与安全诊断</div>
-      <div class="heading-grid reveal"><h2>看见错误如何发生，<br>也看见它如何被拦截。</h2><p>错误路线、过高路径和双臂间距不足分别对应不同的代码或参数。仿真在危险边界前暂停，并同步指出根因。</p></div>
+      <div class="heading-grid reveal"><h2>在三维场景中看见错误，<br>也看见它如何被拦截。</h2><p>错误路线、过高路径和双臂间距不足将在同一WebGL工作台中分别演示；轨迹到达危险边界后暂停，并同步指出对应代码或参数。</p></div>
       <div class="failure-demo reveal">
         <div class="failure-visual">
           <div class="case-tabs" role="tablist" aria-label="错误案例选择"><button class="active" data-case="route" type="button">路线穿越带电区</button><button data-case="height" type="button">高度接近高压线</button><button data-case="arms" type="button">双臂间距不足</button></div>
-          <div class="risk-scene" id="risk-scene">
-            <span class="live-zone">带电区</span><span class="power-line"></span><span class="left-link">左臂</span><span class="right-link">右臂</span><i class="risk-path"></i><b class="risk-point">!</b>
+          <div class="risk-scene case-route" id="risk-scene" aria-label="三维错误案例诊断场景">
+            <div id="failure-webgl-canvas" class="failure-webgl-canvas"></div>
+            <div class="failure-scene-label"><small id="failure-scene-type">ROUTE ERROR</small><strong id="failure-scene-title">路径穿越带电区</strong><span id="failure-scene-note">错误路线将在安全边界前暂停</span></div>
+            <div class="failure-stop"><b>!</b><span id="failure-stop-reason">检测到带电区侵入<strong>操作已叫停</strong></span></div>
+            <div class="failure-view-hint">拖动查看 · 滚轮缩放</div>
+            <div class="webgl-loading" id="failure-webgl-loading">正在载入安全诊断场景…</div>
           </div>
           <button class="play-failure" id="play-failure" type="button"><span>播放错误执行</span><b>→</b></button>
         </div>
@@ -229,6 +233,7 @@
   <script src="script.js"></script>
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script>
   <script type="module" src="webgl-demo.js?v=3"></script>
+  <script type="module" src="failure-webgl.js?v=5"></script>
   <script src="visits.js"></script>
 </body>
 </html>
